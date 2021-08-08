@@ -1,0 +1,41 @@
+{% extends "registration_base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %} {% if messages %} {% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %} {% endif %}
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Log In</legend>
+            <!-- {{ form.as_p }} -->
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Login</button>
+            <a href="{% url 'password_reset' %}">Forget Password??</a>
+
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
+    </div>
+</div>
+{% endblock content %} {% block sidebar %}
+<img style="width:80px; height:80px; margin-left:100px" src="{% static 'images/attention.gif' %}" alt="">
+<div class="col-lg-4 col-md-4" style="margin-left:200px;">
+    <div class="content-section">
+        <h3>Welcome</h3>
+        <p class='text-muted'>Just by logging in, we will provide you a profile
+            <ul class="list-group">
+                <li style="color: red; font-weight:bolder ;" class="list-group-item list-group-item-light">You can Set your Profile picture after logging in</li>
+                <li style="color: red; font-weight:bolder ;" class="list-group-item list-group-item-light">You can sell your second hand Books</li>
+                <li style="color: red; font-weight:bolder ;" class="list-group-item list-group-item-light">help other's by sharing E-Books</li>
+                <li style="color: red; font-weight:bolder ;" class="list-group-item list-group-item-light">Let's Go.....</li>
+            </ul>
+        </p>
+    </div>
+</div>{% endblock sidebar%}

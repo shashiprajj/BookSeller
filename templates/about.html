@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="http://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnm)OCqbTlwIlj8LyTjo7mOU
+    StjsKC4pOpQbqyi7RrhN7udipRwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <!-- <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/aboutpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}"> {% if title %}
+    <title>BookSelling User-interface - {{ title }}</title>
+    {% else %}
+    <title>BookSelling User-interface</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{% url 'index' %}">BookSeller</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{% url 'index' %}">Home <i class="fas fa-home"></i></a>
+                        <a class="nav-item nav-link" href="{% url 'post-pdfs' %}">Create Ebook</a>
+
+                        <!-- Navbar Right Side -->
+                        <div class="navbar-nav">
+                            {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a> {% else %}
+                            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> {% endif %}
+                        </div>
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <h1 style="color: darkorange; font-family: sans-serif;">Our Mission</h1>
+                <h4>
+                    There's this notion that to grow a business, you have to be ruthless. But we know there's a better way to grow. One where what's good for the bottom line is also good for customers. We believe businesses can grow with a conscience, and succeed with a
+                    soul — and that they can do it with inbound. That's why we've created a platform uniting software, education, and community to help students grow better every day.
+                </h4>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+                <img style="width:500px;height:400px;border-radius: 100px;" src="{% static 'images/about_page1.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+
+    <div style="width: auto;">
+        <h1 style="color: darkorange;margin-left:10px">Attract Bookworms with an Online Book Store</h1>
+        <h4 style="color:black; font-family: sans-serif;margin-left:10px">If you’re an ambitious bibliophile, start selling your books online to bookworms around the world. 3dcart makes it easy to list, sell and update your growing, ever-changing catalog of books. Compete against the largest book retailers with a feature-rich
+            platform that makes it easy to list, sell and manage your business.</h4>
+    </div>
+
+    <hr>
+    <br>
+
+
+    <div class="container-2">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <main>
+                    <section id="mainsection" class="container">
+                        <!-- title -->
+                        <div class="title">
+                            <h2 id="our_review">Project Done By</h2>
+                            <!-- <div class="underline"></div> -->
+                        </div>
+                        <!-- review -->
+                        <article class="review">
+                            <div class="img-container">
+                                <img src="person-1.jpeg" id="person-img" alt="" />
+                            </div>
+                            <h4 id="author">sara jones </h4>
+                            <p id="job">ux designer</p>
+                            <p id="info">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto asperiores debitis incidunt, eius earum ipsam cupiditate libero? Iste, doloremque nihil?
+                            </p>
+                            <!-- prev next buttons-->
+                            <div class="button-container">
+                                <button class="prev-btn">
+                                  <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="next-btn">
+                                  <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- random button -->
+                            <button class="random-btn">surprise me</button>
+                        </article>
+                    </section>
+                </main>
+            </div>
+
+
+            <div class="col-lg-4 col-md-12">
+                <div style="margin-left: 100px;margin-top:100px;width: 0%;">
+                    <h1 style="color: deepskyblue;">Helping Students to grow better.</h1>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <br><br>
+    <!-- javascript -->
+    <script>
+        // local reviews data
+        const reviews = [{
+            id: 1,
+            name: "Shashi Prajapati",
+            job: "web developer",
+            img: "{% static 'images/IMG_20190912_152350_710.jpg' %}",
+            text: "I love coding because it really excites me, it is fun to do. It really excites me whenever I come across a problem, I get curious about solving it. I am a person who loves to solve questions involving logic and thinking ability. It gives you a sense of control. You are the one that is making it works. It listens to you completely, when nobody does.",
+        },  ];
+
+        // select Items
+        const img = document.getElementById("person-img");
+        const author = document.getElementById("author");
+        const job = document.getElementById("job");
+        const info = document.getElementById("info");
+
+        const prev = document.querySelector(".prev-btn");
+        const next = document.querySelector(".next-btn");
+        const random = document.querySelector(".random-btn");
+
+        //  set starting item
+        let currentItem = 0;
+
+        window.addEventListener("DOMContentLoaded", function() {
+            showPerson(currentItem);
+        });
+
+        // show person based on item
+        function showPerson(currentItem) {
+            const item = reviews[currentItem];
+            img.src = item.img;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        }
+
+        // show next person
+        next.addEventListener("click", function() {
+            currentItem++;
+            if (currentItem > reviews.length - 1) {
+                currentItem = 0;
+            }
+            showPerson(currentItem);
+        });
+
+        // show prev person
+        prev.addEventListener("click", function() {
+            currentItem--;
+            if (currentItem < 0) {
+                currentItem = reviews.length - 1;
+            }
+            showPerson(currentItem);
+        });
+
+        // random person
+        random.addEventListener("click", function() {
+            let currentItem = Math.floor(Math.random() * reviews.length);
+            showPerson(currentItem);
+        });
+    </script>
+
+    {{result}}

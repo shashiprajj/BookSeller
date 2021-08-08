@@ -1,0 +1,40 @@
+{% extends 'registration_base.html' %}{% block pdfs %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-6" style="width:1000px; height:500px; background-color:lightgray; margin:10px; border:10px solid black; border-radius:25%">
+            <section style="align-content: center;">
+                <div style="margin: auto;width: 50%;
+                padding: 10px;" class="article-metadata">
+                    <small style="text-align: right; font-style: italic;margin-left:100px" class="text-muted">-{{ object.date_posted|date:"F d, Y" }}</small><br>
+
+                    <div class="media-body">
+                        <h5><img class="rounded-circle article-img" src="{{ object.username.profile.image.url }}" alt=""> {{object.username}}</h5>
+                        <h4 style="letter-spacing: normal;font-size: 20px;" class="media-heading">
+                            <a href="{{ pdf.pdf_file.url }}"></a>E-Book name or Subject:- {{ object.EBook_name }}
+                            <p style="color: darkred; font-size: 15px;">{{ object.branch }} || {{ object.year }} || {{ object.sem }} sem</p>
+                        </h4>
+
+                    </div>
+
+                    <!-- <button style="margin-left: 50px;" class="btn btn-primary"><a href="{{ object.Upload_EBook.url }}"></a>Download</button> -->
+                    <p>Your E-Book name (pdf file):- {{ object.Upload_EBook.url }}</p>
+                    <p style="color: green; font-size:20px">Thank you {{ object.username }} for sharing... Keep helping others...</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</div>
+{% if user.is_authenticated %}
+<div style="margin-left:300px">
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'pdf-update' object.id %}">Update</a>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'pdf-delete' object.id %}">Delete</a> {% endif %}
+</div>
+</div>
+
+<div style="margin-top:-80px">
+    <h1 style="text-align: center;margin-top:100px"><a href="{% url 'index' %}">Go back to Home page</a></h1>
+</div>
+{% endblock pdfs %}

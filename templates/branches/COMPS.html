@@ -1,0 +1,125 @@
+{% extends 'base.html' %} {%block dropdown %}
+<div style="align-items: center;" class="dropdown">
+    <span style="font-size: large; color : black; margin-left:0px">Want to Buy, Select Your Branch here:</span>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Branch<i class="fa fa-book" aria-hidden="true"></i>
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation">Information Technology
+            <ul>
+                <a href="{% url 'FE_IT' %}">FE-IT</a> |
+                <a href="{% url 'SE_IT' %}">SE-IT</a> |
+                <a href="{% url 'TE_IT' %}">TE-IT</a> |
+                <a href="{% url 'BE_IT' %}">BE-IT</a>
+            </ul>
+        </li>
+        <li role="presentation">Computer Science
+            <ul>
+                <a href="{% url 'FE_CS' %}">FE-CS</a> |
+                <a href="{% url 'SE_CS' %}">SE-CS</a> |
+                <a href="{% url 'TE_CS' %}">TE-CS</a> |
+                <a href="{% url 'BE_CS' %}">BE-CS</a>
+            </ul>
+        </li>
+        <li role="presentation">Electronics and Telecommunication
+            <ul>
+                <a href="{% url 'FE_EXTC' %}">FE-EXTC</a> |
+                <a href="{% url 'SE_EXTC' %}">SE-EXTC</a> |
+                <a href="{% url 'TE_EXTC' %}">TE-EXTC</a> |
+                <a href="{% url 'BE_EXTC' %}">BE-EXTC</a>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+
+<div>
+    <h5><a href="{% url 'latest_updates' %}"><i class="fal fa-sparkles"></i> Latest Updates <i class="fa fa-newspaper-o" aria-hidden="true"></i></a></h5>
+</div>
+
+
+<div style="align-items: center;" class="dropdown">
+    <span style="font-size: large; color : black; margin-left:0px">Get your E-Books here:</span>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Branch<i class="fa fa-file" aria-hidden="true"></i>
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a href="{% url 'IT' %}">Information Technology</a></li>
+        <li role="presentation"><a href="{% url 'COMPS' %}">Computer Science</a></li>
+        <li role="presentation"><a href="{% url 'EXTC' %}">Electronics and Telecommunication</a></li>
+    </ul>
+</div>
+{%endblock%} {% block branch %}
+<div style="margin-top: -100px;" class="section_subtitle">simply amazing books</div>
+<div class="section_title">
+    <h2>Computer Science EBooks</h2>
+</div>
+{% endblock branch %} {% block pdfs %} {% for pdf in COMPS %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-4" style="width:800px; height:250px; background-color:lightgray; margin:10px; border:10px solid black; border-radius:25%">
+            <section style="align-content: center;">
+                <div style="margin: auto;width: 50%;
+                padding: 10px;" class="article-metadata">
+                    <small style="text-align: right; font-style: italic;margin-left:100px" class="text-muted">-{{ pdf.date_posted|date:"F d, Y" }}</small><br>
+
+                    <div class="media-body">
+                        <h4 style="letter-spacing: normal;font-size: 20px;" class="media-heading">
+                            <h5><img style="width:40px;height:40px" class="rounded-circle article-img" src="{{ pdf.username.profile.image.url }}" alt=""> {{pdf.username}}</h5>
+                            <a href="{{ pdf.pdf_file.url }}"></a>E-Book name:- {{ pdf.EBook_name }}
+                            <p style="color: darkred; font-size: 15px;">{{ pdf.year }} || {{ pdf.sem }} Sem</p>
+                        </h4>
+                        <!-- <h5>Posted by:- {{pdf.username}}</h5> -->
+                    </div>
+                    <button style="margin-left: 50px;" class="btn btn-primary"><a href="{{ pdf.Upload_EBook.url }}">Download <i class="fa fa-download" aria-hidden="true"></i></a></button>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endfor %} {% endblock pdfs %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+
+            <div class="media">
+                <div class="media-left">
+                    <!-- to get img in left side-->
+                    <a href="#">
+                        <a href=""></a><img src="dummy_man.jpg" alt="man" class="media-object" style="width : 90px; height : 90px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <a href="{{ pdf.pdf_file.url }}"></a>{{ pdf.EBook_name }}<small><i>{{ pdf.date_posted|date:"F d, Y" }} </i></small>
+                        <p>{{ pdf.year }} || {{ pdf.branch }} || {{ pdf.sem }}</p>
+                        <button class="btn btn-primary"><a href="{{ pdf.Upload_EBook.url }}">Download</a></button>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <article class="media content-section">
+        <!-- <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt=""> -->
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{{ pdf.pdf_file.url }}">{{ pdf.EBook_name }}</a>
+                <small class="text-muted">{{ pdf.date_posted|date:"F d, Y" }}</small>
+
+            </div>
+            <p class="article-title">{{ pdf.year }}</p>
+            <p class="article-title">{{ pdf.branch }}</p>
+            <p class="article-content">{{ pdf.sem }}</p>
+        </div>
+    </article>

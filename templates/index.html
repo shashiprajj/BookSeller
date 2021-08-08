@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% load static %} {%block dropdown %}
+
+
+
+<div style="align-items: center;" class="dropdown">
+    <span style="font-size: large; color : black; margin-left:0px">Buy your Engineering Books Here:</span>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Branch<i class="fa fa-book" aria-hidden="true"></i>
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation">Information Technology
+            <ul>
+                <a href="{% url 'FE_IT' %}">FE-IT</a> |
+                <a href="{% url 'SE_IT' %}">SE-IT</a> |
+                <a href="{% url 'TE_IT' %}">TE-IT</a> |
+                <a href="{% url 'BE_IT' %}">BE-IT</a>
+            </ul>
+        </li>
+        <li role="presentation">Computer Science
+            <ul>
+                <a href="{% url 'FE_CS' %}">FE-CS</a> |
+                <a href="{% url 'SE_CS' %}">SE-CS</a> |
+                <a href="{% url 'TE_CS' %}">TE-CS</a> |
+                <a href="{% url 'BE_CS' %}">BE-CS</a>
+            </ul>
+        </li>
+        <li role="presentation">Electronics and Telecommunication
+            <ul>
+                <a href="{% url 'FE_EXTC' %}">FE-EXTC</a> |
+                <a href="{% url 'SE_EXTC' %}">SE-EXTC</a> |
+                <a href="{% url 'TE_EXTC' %}">TE-EXTC</a> |
+                <a href="{% url 'BE_EXTC' %}">BE-EXTC</a>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <h5>
+        <a href="{% url 'latest_updates' %}">
+            <img style="width:40px; height:40px" src="{% static 'images/latest_updated.gif' %}" alt=""> Latest Updates <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+    </h5>
+</div>
+
+<div style="align-items: center;" class="dropdown">
+    <span style="font-size: large; color : black; margin-left:0px">Get your E-Books Here: </span>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Branch<i class="fa fa-file" aria-hidden="true"></i>
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a href="{% url 'IT' %}">Information Technology</a></li>
+        <li role="presentation"><a href="{% url 'COMPS' %}">Computer Science</a></li>
+        <li role="presentation"><a href="{% url 'EXTC' %}">Electronics and Telecommunication</a></li>
+    </ul>
+</div>
+{%endblock%} {% block branch %}
+<div style="margin-top: -100px;" class="section_subtitle">simply amazing books</div>
+<div class="section_title">
+    <h2>Recent Posted books</h2>
+</div>
+{% endblock branch %} {% block content %} {% for post in posts %}
+<!-- <div class="section-center"> -->
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <article style="margin-left:100px;padding-bottom:5px;" class="menu-item">
+            <div>
+                <img style="width:220px;height:220px; box-shadow:10px -10px grey ;" src="{{ post.book_img.url }}" alt="menu item" class="photo" />
+                <div style="margin-left: 0px;" class="spec_offer text-center"><a style=" font-size:10px" href="{% url 'post-detail' post.id %}">{{post.book_name}}</a></div>
+            </div>
+
+            <div class="item-info">
+                <header>
+                    <h4><a href="{% url 'post-detail' post.id %}">{{post.book_name}}</a></h4>
+                    <p>{{post.date_posted|date:"F d, Y"}}</p>
+                </header>
+                <h3 style="margin-top:3px"><img style="width:40px;height:40px" class="rounded-circle article-img" src="{{ post.username.profile.image.url }}" alt=""> {{ post.username }}<a style="font-size:15px; letter-spacing: 0px;" href="{% url 'user-posts' post.username %}">(View all..<i class="fa fa-tags" aria-hidden="true"></i>)</a></h3>
+
+                <h3 style="font-style: normal;letter-spacing: 0.5px; font-size:20px">Author of the Book : {{post.Author_of_book}}</h3>
+                <h4><span>{{post.branch}} || </span><span>{{post.year}}  || </span><span>{{post.sem}} sem</span></h4>
+
+                <h4 class="price">Rs.{{post.sp_price}} <span style="color:red;text-decoration:line-through;">Rs.{{post.op_price}}</span></h4>
+                <!-- <p>Posted by:- {{ post.username }} -->
+                <!-- <a href="{% url 'user-posts' post.username %}">(View all..)</a></p> -->
+                <button class="btn btn-primary"><a href="{% url 'post-detail' post.id %}">Buy Now<i class="fa fa-shopping-basket" aria-hidden="true"></i></a></button>
+            </div>
+    </div>
+</div>
+</article>
+<br><br> {% endfor %} {% endblock %}
