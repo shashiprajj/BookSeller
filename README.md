@@ -2,6 +2,8 @@
 BookSeller || Django || Python || MySQL (Book and E-Book Selling Website Project)
 
 
+A BookSelling Website where users/students can visit create their profile and post their second hand books and E-books for sell. And on the other side, previous batches students can buy those books at feasible price.
+
  ======== ***Problem Statement:*** =========== <br/>
 -        Many students faces problem in selection of Books every semester.
 -        Not every student can also afford to buy new books at the same time.
