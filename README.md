@@ -11,7 +11,7 @@ A BookSelling Website where users/students can visit create their profile and po
          back after selling it on the respective shops.
 
 
- ======== ***Problem Statement:*** =========== <br/>
+ ======== ***Languages Used:*** =========== <br/>
  HTML-5<br/>
 CSS-3<br/>
 SCSS-3<br/>
